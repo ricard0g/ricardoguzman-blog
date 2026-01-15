@@ -51,7 +51,7 @@ git init
 
 # IMPORTANT -> Create a .gitignore file. this will save you A LOT of headaches trust me.
 
-# PD: This is the one I have and works for me, of course if you think that other files should be ignore you're to ignore them
+# PD: This is the one I have and works for me, of course if you think that other files should be ignored you're free to ignore them
 
 echo ".obsidian/workspace.json\n.obsidian/workspaces.json\n.obsidian/plugins/obsidian-git/data.json\n.trash/" > .gitignore
 

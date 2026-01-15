@@ -9,6 +9,29 @@
   --color-primary-dark-text: #ccc;
   --color-primary-dark-border: #333;
   --color-primary-light-border: #ccc;
+
+  /* Shadows */
+    --shadow-cool-subtle:
+        inset 0px 4px 4px #ffffff15,
+        0px 2px 4px #55555530,
+        0px 4px 8px #00000015;
+    --shadow-cool-medium:
+        inset 0px 4px 4px #ffffff40,
+        0px 2px 4px #00000030,
+        0px 4px 8px #00000015;
+    --shadow-cool-strong:
+        inset 0px 4px 4px #ffffff50,
+        0px 4px 6px #00000030,
+        0px 6px 10px #00000015;
+
+
+    --shadow-cool-inner-subtle:
+        inset 0 -4px 7px #00000010,
+        inset 0 4px 7px #00000030;
+
+    --shadow-cool-inner-strong:
+        inset 0 -7px 7px #00000010,
+        inset 0 7px 7px #00000030;
 }
 
 /* Gradient heading with proper fallback */

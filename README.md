@@ -1,3 +1,3 @@
-# Personal Portfolio
+# Personal Blog Page
 
-This is a very minimalistic portfolio where I will be sharing blog posts about different topics.
+This is a very minimalistic blog page where I will be sharing posts about different topics.

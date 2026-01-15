@@ -14,6 +14,6 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 	},
-	site: "https://ricardoguzman.dev",
+	site: "https://blog.ricardoguzman.dev",
 	integrations: [sitemap()],
 });

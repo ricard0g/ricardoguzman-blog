@@ -2,8 +2,8 @@
 layout: "../../layouts/PostLayout.astro"
 slug: "google-ai-moat-part-3"
 title: "Google's AI Moat: The Research Engine That Built the Future (Part 3)"
-pubDateString: "2026, January 29th"
-pubDate: 2026-01-29
+pubDateString: "2026, February 2nd"
+pubDate: 2026-02-02
 tags:
   [
     "Google",

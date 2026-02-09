@@ -3,7 +3,28 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Analytics from "@vercel/analytics/astro";
 import ThemeButton from "../components/ThemeButton.astro";
-const { frontmatter } = Astro.props;
+import SocialMeta from "../components/SocialMeta.astro";
+
+interface PostFrontmatter {
+	title: string;
+	description: string;
+	ogDescription?: string;
+	twitterDescription?: string;
+	image?: string;
+	imageAlt?: string;
+	pubDate: Date;
+	updateDate?: Date;
+	tags: string[];
+	author: string;
+	pubDateString: string;
+}
+
+const { frontmatter } = Astro.props as { frontmatter: PostFrontmatter };
+
+const publishedTime = new Date(frontmatter.pubDate).toISOString();
+const modifiedTime = frontmatter.updateDate
+	? new Date(frontmatter.updateDate).toISOString()
+	: undefined;
 ---
 
 <!doctype html>
@@ -12,7 +33,19 @@ const { frontmatter } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-		<meta name="description:" content={frontmatter.description} />
+		<SocialMeta
+			title={frontmatter.title}
+			description={frontmatter.description}
+			ogDescription={frontmatter.ogDescription}
+			twitterDescription={frontmatter.twitterDescription}
+			image={frontmatter.image}
+			imageAlt={frontmatter.imageAlt}
+			type="article"
+			publishedTime={publishedTime}
+			modifiedTime={modifiedTime}
+			author={frontmatter.author}
+			tags={frontmatter.tags}
+		/>
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<title>{frontmatter.title}</title>
 		<script is:inline>

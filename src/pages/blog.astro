@@ -5,12 +5,16 @@ import "../assets/app.css";
 import Posts from "../components/Posts.astro";
 
 const posts = await getCollection("blogCollection");
+const POSTS_PER_PAGE = 5;
 
-const sortedPosts = posts.sort((a, b) => {
+const sortedPosts = [...posts].sort((a, b) => {
 	return (
 		new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 	);
 });
+
+const totalPages = Math.max(1, Math.ceil(sortedPosts.length / POSTS_PER_PAGE));
+const firstPagePosts = sortedPosts.slice(0, POSTS_PER_PAGE);
 ---
 
 <Layout
@@ -18,6 +22,12 @@ const sortedPosts = posts.sort((a, b) => {
 	description="Browse all blog posts by Ricardo Guzman on software, AI, and personal learnings."
 >
 	<div class="flex flex-col items-center justify-center mt-[100px]">
-		<Posts posts={sortedPosts} title="Blog Posts" />
+		<Posts
+			posts={firstPagePosts}
+			title="Blog Posts"
+			currentPage={1}
+			totalPages={totalPages}
+			basePath="/blog"
+		/>
 	</div>
 </Layout>

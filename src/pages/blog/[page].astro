@@ -1,0 +1,60 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import "../../assets/app.css";
+import Posts from "../../components/Posts.astro";
+
+type BlogPost = CollectionEntry<"blogCollection">;
+
+export async function getStaticPaths() {
+	const postsPerPage = 5;
+	const posts = await getCollection("blogCollection");
+	const sortedPosts = [...posts].sort(
+		(a, b) =>
+			new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+	);
+	const totalPages = Math.max(1, Math.ceil(sortedPosts.length / postsPerPage));
+
+	if (totalPages <= 1) {
+		return [];
+	}
+
+	return Array.from({ length: totalPages - 1 }, (_, index) => {
+		const page = index + 2;
+		const start = (page - 1) * postsPerPage;
+		const end = start + postsPerPage;
+
+		return {
+			params: { page: String(page) },
+			props: {
+				pagePosts: sortedPosts.slice(start, end),
+				currentPage: page,
+				totalPages,
+			},
+		};
+	});
+}
+
+interface Props {
+	pagePosts: BlogPost[];
+	currentPage: number;
+	totalPages: number;
+}
+
+const { pagePosts, currentPage, totalPages } = Astro.props as Props;
+---
+
+<Layout
+	title={`Blog - Page ${currentPage}`}
+	description="Browse all blog posts by Ricardo Guzman on software, AI, and personal learnings."
+>
+	<div class="flex flex-col items-center justify-center mt-[100px]">
+		<Posts
+			posts={pagePosts}
+			title="Blog Posts"
+			currentPage={currentPage}
+			totalPages={totalPages}
+			basePath="/blog"
+		/>
+	</div>
+</Layout>

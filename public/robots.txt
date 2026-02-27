@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.ricardoguzman.dev/sitemap-index.xml
+Sitemap: https://blog.ricardoguzdev.com/sitemap-index.xml

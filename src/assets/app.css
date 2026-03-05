@@ -169,6 +169,7 @@
 .pretty ul,
 .pretty ol {
   margin: 0.5rem 0;
+  margin-bottom: 1.5rem;
   padding-left: 2rem;
   line-height: 1.75;
 }
@@ -216,7 +217,8 @@
 
 /* Tables */
 .pretty table {
-  width: 100%;
+  max-width: 100%;
+  width: fit-content;
   border-collapse: collapse;
   margin: 1.5rem 0;
   font-size: 0.875rem;
